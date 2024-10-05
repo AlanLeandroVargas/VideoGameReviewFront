@@ -16,9 +16,11 @@ app.get('/', (req, res) => {
     res.render('index', { title: 'Home' }); 
 });
 app.get('/signUp', (req, res) => {
-    res.render('signUp', { title: 'Sign up'});
+    res.render('signUp', { title: 'Registrarse'});
 })
-
+app.get('/login', (req, res) => {
+    res.render('login', { title: 'Iniciar Sesion' })
+})
 app.use((req, res) => {
     res.status(404).send('404: Page Not Found');
 });
