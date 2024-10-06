@@ -12,12 +12,23 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/general.css">
 </head>
 
 <body>
     <%- include('partials/header') %>
-        <div class="container mt-3">           
-            <h2 class="border-bottom border-dark p-2">Ultimos juegos</h2>
+        <div class="container mt-3 border-dark">           
+            <h2 class="border-bottom p-2">Ultimos juegos</h2>
+            <button class="border-0 rounded btn-primary m-2" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="border-0 rounded btn-primary m-2" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
         </div>
         <div class="container d-flex vw-100">
             <div id="carouselExampleControls" class="carousel slide align-self-center" data-bs-ride="carousel">
@@ -26,32 +37,34 @@
                         <div class="d-flex">
                             <% firstRow.forEach(function(game) { %>
                                 <div class="card d-flex m-2 w-25">
-                                    <img src="<%= game.imageUrl %>" class="card-img-top" alt="...">
-                                    <div class="card-body d-flex flex-column">
-                                        <h3 class="card-title">
-                                            <%= game.name %>
-                                        </h3>
-                                        <div class="container p-0 mt-3 d-flex flex-wrap">
-                                            <% game.genre.forEach(function(genre) { %>
-                                                <p class="border p-1 mx-1 text-center rounded">
-                                                    <%= genre %>
-                                                </p>
-                                                <% }); %>                                                    
-                                        </div>
-                                        <div class="container border-top card-bottom px-0 d-flex">
-                                            <div class="container p-0 mt-3">
-                                                <h6>Generalmente favorable</h6>
-                                                <p class="card-text">Basado en <%= game.amountOfReviews %> criticas</p>
+                                    <a href="/game/<%= game.name %>">
+                                        <img src="<%= game.imageUrl %>" class="card-img-top" alt="...">
+                                        <div class="card-body d-flex flex-column">
+                                            <h3 class="card-title">
+                                                <%= game.name %>
+                                            </h3>
+                                            <div class="container p-0 mt-3 d-flex flex-wrap">
+                                                <% game.genre.forEach(function(genre) { %>
+                                                    <p class="border p-1 mx-1 text-center rounded">
+                                                        <%= genre %>
+                                                    </p>
+                                                    <% }); %>                                                    
                                             </div>
-                                            <div class="container w-50 d-flex my-3">
-                                                <div class="bg-success align-content-center text-center w-100 rounded">
-                                                    <h2 class="p-2">
-                                                        <%= game.averagePuntuation %>
-                                                    </h2>
+                                            <div class="container border-top card-bottom px-0 d-flex">
+                                                <div class="container p-0 mt-3">
+                                                    <h6>Generalmente favorable</h6>
+                                                    <p class="card-text">Basado en <%= game.amountOfReviews %> criticas</p>
+                                                </div>
+                                                <div class="container w-50 d-flex my-3">
+                                                    <div class="bg-success align-content-center text-center w-100 rounded">
+                                                        <h2 class="p-2">
+                                                            <%= game.averagePuntuation %>
+                                                        </h2>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </a>                                    
                                 </div>
                                 <% }); %>
                         </div>
@@ -175,17 +188,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+                </div>                
             </div>
         </div>
 </body>

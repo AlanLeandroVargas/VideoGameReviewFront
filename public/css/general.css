@@ -3,3 +3,18 @@
     --color-primary-orange: #ffbd3f;
     --color-primary-green: #00ce7a;
 }
+a {
+    color: inherit;         
+    text-decoration: none;   
+    background: none;      
+    border: none;           
+    padding: 0;            
+    margin: 0;           
+    display: inline;       
+}
+a:hover {
+    color: inherit;         
+    text-decoration: none;   
+    background: none;      
+    border: none;           
+}
