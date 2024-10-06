@@ -20,6 +20,7 @@ function login(){
             if(!response.ok) throw new Error(response.status);
             const userData = await response.json();
             document.cookie = `token=${userData.token}; path=/;`;
+            document.cookie = `userId=${userData.userId}; path=/;`;
             window.location.href = '/';
         }
         catch(error){
