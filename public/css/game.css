@@ -43,3 +43,24 @@
     background-color: #ffbd3f;
     font-size: 2rem;
 }
+.review-card{
+    /* background-color: gray; */
+}
+.review-card-header{
+    display: flex;
+    align-items: center;
+}
+.user-score{
+    border-radius: 100px;
+    text-align: center;
+    align-content: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    font-size: 2rem;
+    background-color: #ffbd3f;
+}
+.username{
+}
+.date{
+    text-align: center;
+}
