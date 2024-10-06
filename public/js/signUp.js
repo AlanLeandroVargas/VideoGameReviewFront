@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     signUp();
 })
 function signUp() {
-    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    document.getElementById('signUpForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         try {
             const body = {};
