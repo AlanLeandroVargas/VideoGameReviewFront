@@ -18,7 +18,10 @@ app.set('views', path.join(__dirname, '..', 'public', 'views'));
 
 app.get('/', checkAuth, async (req, res) => {
     const retrievedGames = await retrieveGamesByGenre('Rol');
-    res.render('index', { title: 'Home', firstRow: retrievedGames.firstRow, secondRow: retrievedGames.secondRow, isLoggedIn: req.isLoggedIn });
+    const actionGames = await retrieveGamesByGenre('Acción');
+    res.render('index', { title: 'Home', firstRow: retrievedGames.firstRow, secondRow: retrievedGames.secondRow, thirdRow: retrievedGames.thirdRow, 
+        actionGames: actionGames,
+        isLoggedIn: req.isLoggedIn });
 });
 app.get('/signUp', (req, res) => {
     res.render('signUp', { title: 'Registrarse' });

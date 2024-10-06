@@ -17,21 +17,21 @@
 
 <body>
     <%- include('partials/header') %>
-        <div class="container mt-3 border-dark">           
+        <div class="container mt-3 border-dark">
             <h2 class="border-bottom p-2">Ultimos juegos</h2>
-            <button class="border-0 rounded btn-primary m-2" type="button" data-bs-target="#carouselExampleControls"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="border-0 rounded btn-primary m-2" type="button" data-bs-target="#carouselExampleControls"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+            <button class="border-0 rounded btn-primary m-2" type="button" data-bs-target="#latestGames"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="border-0 rounded btn-primary m-2" type="button" data-bs-target="#latestGames"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
         <div class="container d-flex vw-100">
-            <div id="carouselExampleControls" class="carousel slide align-self-center" data-bs-ride="carousel">
+            <div id="latestGames" class="carousel slide align-self-center" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="card-group carousel-item active">
                         <div class="d-flex">
@@ -48,161 +48,345 @@
                                                     <p class="border p-1 mx-1 text-center rounded">
                                                         <%= genre %>
                                                     </p>
-                                                    <% }); %>                                                    
+                                                    <% }); %>
                                             </div>
                                             <div class="container border-top card-bottom px-0 d-flex">
                                                 <div class="container p-0 mt-3">
                                                     <h6>Generalmente favorable</h6>
-                                                    <p class="card-text">Basado en <%= game.amountOfReviews %> criticas</p>
+                                                    <p class="card-text">Basado en <%= game.amountOfReviews %> criticas
+                                                    </p>
                                                 </div>
                                                 <div class="container w-50 d-flex my-3">
                                                     <% if (game.averagePuntuation < 4) {%>
-                                                        <div class="align-content-center text-center w-100 rounded bad-rating">
+                                                        <div
+                                                            class="align-content-center text-center w-100 rounded bad-rating">
                                                             <h2 class="p-2">
                                                                 <%= game.averagePuntuation %>
                                                             </h2>
                                                         </div>
-                                                        <% } else if (game.averagePuntuation >= 4 && game.averagePuntuation < 8) { %>
-                                                            <div class="align-content-center text-center w-100 rounded decent-rating">
-                                                                <h2 class="p-2">
-                                                                    <%= game.averagePuntuation %>
-                                                                </h2>
-                                                            </div>
+                                                        <% } else if (game.averagePuntuation>= 4 &&
+                                                            game.averagePuntuation < 8) { %>
+                                                                <div
+                                                                    class="align-content-center text-center w-100 rounded decent-rating">
+                                                                    <h2 class="p-2">
+                                                                        <%= game.averagePuntuation %>
+                                                                    </h2>
+                                                                </div>
                                                                 <% } else { %>
-                                                                    <div class="align-content-center text-center w-100 rounded good-rating">
+                                                                    <div
+                                                                        class="align-content-center text-center w-100 rounded good-rating">
                                                                         <h2 class="p-2">
                                                                             <%= game.averagePuntuation %>
                                                                         </h2>
                                                                     </div>
-                                                                    <% } %>                                                    
+                                                                    <% } %>
                                                 </div>
                                             </div>
                                         </div>
-                                    </a>                                    
+                                    </a>
                                 </div>
                                 <% }); %>
                         </div>
                     </div>
-                    <!-- <div class="card-group carousel-item">
-                        <div class="d-flex">
-                            <% secondRow.forEach(function(game) { %>
-                                <div class="card m-2 w-25">
-                                    <img src="<%= game.imageUrl %>" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h3 class="card-title">
-                                            <%= game.name %>
-                                        </h3>
-                                        <div class="container p-0 mt-3 d-flex">
-                                            <p class="border w-25 mx-1 text-center rounded">RPG</p>
-                                            <p class="border w-25 mx-1 text-center rounded">Accion</p>
-                                        </div>
-                                        <div class="container border-top mt-5 px-0 d-flex">
-                                            <div class="container p-0 mt-3">
-                                                <h6>Generalmente favorable</h6>
-                                                <p class="card-text">Basado en <%= game.amountOfReviews %> criticas</p>
-                                            </div>
-                                            <div class="container w-50 d-flex my-3">
-                                                <div class="bg-success align-content-center text-center w-100 rounded">
-                                                    <h2 class="p-2">
-                                                        <%= game.averagePuntuation %>
-                                                    </h2>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <% }); %>
-                        </div>
-                    </div>   -->
                     <div class="card-group carousel-item">
                         <div class="d-flex">
-                            <div class="card m-2 w-25">
-                                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/header.jpg?t=1725654125"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h3 class="card-title">Baldur's Gate</h3>
-                                    <div class="container p-0 mt-3 d-flex">
-                                        <p class="border w-25 mx-1 text-center rounded">RPG</p>
-                                        <p class="border w-25 mx-1 text-center rounded">Accion</p>
-                                        <p class="border w-25 mx-1 text-center rounded">RPG</p>
-                                        <p class="border w-25 mx-1 text-center rounded">RPG</p>
-                                    </div>
-                                    <div class="container border-top mt-5 px-0 d-flex">
-                                        <div class="container p-0 mt-3">
-                                            <h6>Generalmente favorable</h6>
-                                            <p class="card-text">Basado en 15 criticas</p>
-                                        </div>
-                                        <div class="container w-50 d-flex my-3">
-                                            <div class="bg-success align-content-center text-center w-100 rounded">
-                                                <h2 class="p-2">100</h2>
+                            <% secondRow.forEach(function(game) { %>
+                                <div class="card d-flex m-2 w-25">
+                                    <a href="/game/<%= game.name %>">
+                                        <img src="<%= game.imageUrl %>" class="card-img-top" alt="...">
+                                        <div class="card-body d-flex flex-column">
+                                            <h3 class="card-title">
+                                                <%= game.name %>
+                                            </h3>
+                                            <div class="container p-0 mt-3 d-flex flex-wrap">
+                                                <% game.genre.forEach(function(genre) { %>
+                                                    <p class="border p-1 mx-1 text-center rounded">
+                                                        <%= genre %>
+                                                    </p>
+                                                    <% }); %>
+                                            </div>
+                                            <div class="container border-top card-bottom px-0 d-flex">
+                                                <div class="container p-0 mt-3">
+                                                    <h6>Generalmente favorable</h6>
+                                                    <p class="card-text">Basado en <%= game.amountOfReviews %> criticas
+                                                    </p>
+                                                </div>
+                                                <div class="container w-50 d-flex my-3">
+                                                    <% if (game.averagePuntuation < 4) {%>
+                                                        <div
+                                                            class="align-content-center text-center w-100 rounded bad-rating">
+                                                            <h2 class="p-2">
+                                                                <%= game.averagePuntuation %>
+                                                            </h2>
+                                                        </div>
+                                                        <% } else if (game.averagePuntuation>= 4 &&
+                                                            game.averagePuntuation < 8) { %>
+                                                                <div
+                                                                    class="align-content-center text-center w-100 rounded decent-rating">
+                                                                    <h2 class="p-2">
+                                                                        <%= game.averagePuntuation %>
+                                                                    </h2>
+                                                                </div>
+                                                                <% } else { %>
+                                                                    <div
+                                                                        class="align-content-center text-center w-100 rounded good-rating">
+                                                                        <h2 class="p-2">
+                                                                            <%= game.averagePuntuation %>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <% } %>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="card m-2 w-25">
-                                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/435150/header.jpg?t=1725653917"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h3 class="card-title">Divinity Original Sin</h3>
-                                    <div class="container p-0 mt-3 d-flex">
-                                        <p class="border w-25 mx-1 text-center rounded">RPG</p>
-                                        <p class="border w-25 mx-1 text-center rounded">Accion</p>
-                                        <p class="border w-25 mx-1 text-center rounded">RPG</p>
-                                        <p class="border w-25 mx-1 text-center rounded">RPG</p>
-                                    </div>
-                                    <div class="container border-top mt-5 px-0 d-flex">
-                                        <div class="container p-0 mt-3">
-                                            <h6>Generalmente favorable</h6>
-                                            <p class="card-text">Basado en 20 criticas</p>
-                                        </div>
-                                        <div class="container w-50 d-flex my-3">
-                                            <div class="bg-success align-content-center text-center w-100 rounded">
-                                                <h2 class="p-2">87</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card m-2 w-25">
-                                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/200710/header.jpg?t=1712608749"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h3 class="card-title">Torchlight II</h3>
-                                    <div class="container p-0 mt-3 d-flex">
-                                        <p class="border w-25 mx-1 text-center rounded">RPG</p>
-                                        <p class="border w-25 mx-1 text-center rounded">Accion</p>
-                                        <p class="border w-25 mx-1 text-center rounded">RPG</p>
-                                        <p class="border w-25 mx-1 text-center rounded">RPG</p>
-                                    </div>
-                                    <div class="container border-top mt-5 px-0 d-flex">
-                                        <div class="container p-0 mt-3">
-                                            <h6>Opiniones mixtas</h6>
-                                            <p>Basado en 20 criticas</p>
-                                        </div>
-                                        <div class="container w-50 d-flex my-3">
-                                            <div class="bg-warning align-content-center text-center w-100 rounded">
-                                                <h2 class="p-2">45</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card m-2 w-25">
-                                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1245620/header.jpg?t=1726158298"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h3 class="card-title">Elden Ring</h3>
-                                    <p class="card-text">EL NUEVO JUEGO DE ROL Y ACCIÓN DE AMBIENTACIÓN FANTÁSTICA.
-                                        Álzate, Sinluz, y que la gracia te guíe para abrazar el poder del Círculo de
-                                        Elden y encumbrarte como señor del Círculo en las Tierras Intermedias.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small>
-                                    </p>
-                                </div>
-                            </div>
+                                <% }); %>
                         </div>
                     </div>
-                </div>                
+
+                    <div class="card-group carousel-item">
+                        <div class="d-flex">
+                            <% thirdRow.forEach(function(game) { %>
+                                <div class="card d-flex m-2 w-25">
+                                    <a href="/game/<%= game.name %>">
+                                        <img src="<%= game.imageUrl %>" class="card-img-top" alt="...">
+                                        <div class="card-body d-flex flex-column">
+                                            <h3 class="card-title">
+                                                <%= game.name %>
+                                            </h3>
+                                            <div class="container p-0 mt-3 d-flex flex-wrap">
+                                                <% game.genre.forEach(function(genre) { %>
+                                                    <p class="border p-1 mx-1 text-center rounded">
+                                                        <%= genre %>
+                                                    </p>
+                                                    <% }); %>
+                                            </div>
+                                            <div class="container border-top card-bottom px-0 d-flex">
+                                                <div class="container p-0 mt-3">
+                                                    <h6>Generalmente favorable</h6>
+                                                    <p class="card-text">Basado en <%= game.amountOfReviews %> criticas
+                                                    </p>
+                                                </div>
+                                                <div class="container w-50 d-flex my-3">
+                                                    <% if (game.averagePuntuation < 4) {%>
+                                                        <div
+                                                            class="align-content-center text-center w-100 rounded bad-rating">
+                                                            <h2 class="p-2">
+                                                                <%= game.averagePuntuation %>
+                                                            </h2>
+                                                        </div>
+                                                        <% } else if (game.averagePuntuation>= 4 &&
+                                                            game.averagePuntuation < 8) { %>
+                                                                <div
+                                                                    class="align-content-center text-center w-100 rounded decent-rating">
+                                                                    <h2 class="p-2">
+                                                                        <%= game.averagePuntuation %>
+                                                                    </h2>
+                                                                </div>
+                                                                <% } else { %>
+                                                                    <div
+                                                                        class="align-content-center text-center w-100 rounded good-rating">
+                                                                        <h2 class="p-2">
+                                                                            <%= game.averagePuntuation %>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <% }); %>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="container mt-3 border-dark">
+            <h2 class="border-bottom p-2">Acción</h2>
+            <button class="border-0 rounded btn-primary m-2" type="button" data-bs-target="#actionGames"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="border-0 rounded btn-primary m-2" type="button" data-bs-target="#actionGames"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <div class="container d-flex vw-100">
+            <div id="actionGames" class="carousel slide align-self-center" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="card-group carousel-item active">
+                        <div class="d-flex">
+                            <% actionGames.firstRow.forEach(function(game) { %>
+                                <div class="card d-flex m-2 w-25">
+                                    <a href="/game/<%= game.name %>">
+                                        <img src="<%= game.imageUrl %>" class="card-img-top" alt="...">
+                                        <div class="card-body d-flex flex-column">
+                                            <h3 class="card-title">
+                                                <%= game.name %>
+                                            </h3>
+                                            <div class="container p-0 mt-3 d-flex flex-wrap">
+                                                <% game.genre.forEach(function(genre) { %>
+                                                    <p class="border p-1 mx-1 text-center rounded">
+                                                        <%= genre %>
+                                                    </p>
+                                                    <% }); %>
+                                            </div>
+                                            <div class="container border-top card-bottom px-0 d-flex">
+                                                <div class="container p-0 mt-3">
+                                                    <h6>Generalmente favorable</h6>
+                                                    <p class="card-text">Basado en <%= game.amountOfReviews %> criticas
+                                                    </p>
+                                                </div>
+                                                <div class="container w-50 d-flex my-3">
+                                                    <% if (game.averagePuntuation < 4) {%>
+                                                        <div
+                                                            class="align-content-center text-center w-100 rounded bad-rating">
+                                                            <h2 class="p-2">
+                                                                <%= game.averagePuntuation %>
+                                                            </h2>
+                                                        </div>
+                                                        <% } else if (game.averagePuntuation>= 4 &&
+                                                            game.averagePuntuation < 8) { %>
+                                                                <div
+                                                                    class="align-content-center text-center w-100 rounded decent-rating">
+                                                                    <h2 class="p-2">
+                                                                        <%= game.averagePuntuation %>
+                                                                    </h2>
+                                                                </div>
+                                                                <% } else { %>
+                                                                    <div
+                                                                        class="align-content-center text-center w-100 rounded good-rating">
+                                                                        <h2 class="p-2">
+                                                                            <%= game.averagePuntuation %>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <% }); %>
+                        </div>
+                    </div>
+                    <div class="card-group carousel-item">
+                        <div class="d-flex">
+                            <% actionGames.secondRow.forEach(function(game) { %>
+                                <div class="card d-flex m-2 w-25">
+                                    <a href="/game/<%= game.name %>">
+                                        <img src="<%= game.imageUrl %>" class="card-img-top" alt="...">
+                                        <div class="card-body d-flex flex-column">
+                                            <h3 class="card-title">
+                                                <%= game.name %>
+                                            </h3>
+                                            <div class="container p-0 mt-3 d-flex flex-wrap">
+                                                <% game.genre.forEach(function(genre) { %>
+                                                    <p class="border p-1 mx-1 text-center rounded">
+                                                        <%= genre %>
+                                                    </p>
+                                                    <% }); %>
+                                            </div>
+                                            <div class="container border-top card-bottom px-0 d-flex">
+                                                <div class="container p-0 mt-3">
+                                                    <h6>Generalmente favorable</h6>
+                                                    <p class="card-text">Basado en <%= game.amountOfReviews %> criticas
+                                                    </p>
+                                                </div>
+                                                <div class="container w-50 d-flex my-3">
+                                                    <% if (game.averagePuntuation < 4) {%>
+                                                        <div
+                                                            class="align-content-center text-center w-100 rounded bad-rating">
+                                                            <h2 class="p-2">
+                                                                <%= game.averagePuntuation %>
+                                                            </h2>
+                                                        </div>
+                                                        <% } else if (game.averagePuntuation>= 4 &&
+                                                            game.averagePuntuation < 8) { %>
+                                                                <div
+                                                                    class="align-content-center text-center w-100 rounded decent-rating">
+                                                                    <h2 class="p-2">
+                                                                        <%= game.averagePuntuation %>
+                                                                    </h2>
+                                                                </div>
+                                                                <% } else { %>
+                                                                    <div
+                                                                        class="align-content-center text-center w-100 rounded good-rating">
+                                                                        <h2 class="p-2">
+                                                                            <%= game.averagePuntuation %>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <% }); %>
+                        </div>
+                    </div>
+
+                    <div class="card-group carousel-item">
+                        <div class="d-flex">
+                            <% actionGames.thirdRow.forEach(function(game) { %>
+                                <div class="card d-flex m-2 w-25">
+                                    <a href="/game/<%= game.name %>">
+                                        <img src="<%= game.imageUrl %>" class="card-img-top" alt="...">
+                                        <div class="card-body d-flex flex-column">
+                                            <h3 class="card-title">
+                                                <%= game.name %>
+                                            </h3>
+                                            <div class="container p-0 mt-3 d-flex flex-wrap">
+                                                <% game.genre.forEach(function(genre) { %>
+                                                    <p class="border p-1 mx-1 text-center rounded">
+                                                        <%= genre %>
+                                                    </p>
+                                                    <% }); %>
+                                            </div>
+                                            <div class="container border-top card-bottom px-0 d-flex">
+                                                <div class="container p-0 mt-3">
+                                                    <h6>Generalmente favorable</h6>
+                                                    <p class="card-text">Basado en <%= game.amountOfReviews %> criticas
+                                                    </p>
+                                                </div>
+                                                <div class="container w-50 d-flex my-3">
+                                                    <% if (game.averagePuntuation < 4) {%>
+                                                        <div
+                                                            class="align-content-center text-center w-100 rounded bad-rating">
+                                                            <h2 class="p-2">
+                                                                <%= game.averagePuntuation %>
+                                                            </h2>
+                                                        </div>
+                                                        <% } else if (game.averagePuntuation>= 4 &&
+                                                            game.averagePuntuation < 8) { %>
+                                                                <div
+                                                                    class="align-content-center text-center w-100 rounded decent-rating">
+                                                                    <h2 class="p-2">
+                                                                        <%= game.averagePuntuation %>
+                                                                    </h2>
+                                                                </div>
+                                                                <% } else { %>
+                                                                    <div
+                                                                        class="align-content-center text-center w-100 rounded good-rating">
+                                                                        <h2 class="p-2">
+                                                                            <%= game.averagePuntuation %>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <% }); %>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 </body>

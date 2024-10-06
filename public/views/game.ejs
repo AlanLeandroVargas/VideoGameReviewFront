@@ -65,7 +65,6 @@
                                                     <% } %>
                                 </div>
                             </div>
-
                             <div class="container d-flex mt-5 w-100">
                                 <% if (isLoggedIn) { %>
                                     <button class="btn btn-success w-100" data-bs-toggle="modal"
@@ -81,6 +80,11 @@
         </div>
         <div class="container">
             <h3 class="border-bottom">Reseñas</h3>
+            <% if(reviews.length == 0) { %>
+                <div class="container">
+                    <h2>No hay ninguna reseña para este juego todavia.</h2>
+                </div>
+            <% } %>
             <div class="grid-review-container">
                 <% reviews.forEach(function(review) { %>
                     <div class="card mb-3 mt-3 bg-dark" style="max-width: 540px;">

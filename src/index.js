@@ -9,6 +9,7 @@ async function retrieveGamesByGenre(genre)
         const rows = {
             firstRow: videogames.slice(0, 4),
             secondRow: videogames.slice(4, 8),
+            thirdRow: videogames.slice(8, 12)
         }
         return rows;
     }
