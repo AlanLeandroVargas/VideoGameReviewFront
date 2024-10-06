@@ -4,3 +4,42 @@
 .card-picture{
     width: 100%;
 }
+.modal-img{
+    object-fit: fill;
+    width: 40%;
+    height: 40%;
+}
+.rating-container{
+    align-items: center;
+}
+.rating-number{
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: gray;
+    width: 2rem;
+    height: 2.5rem;
+    text-align: center;
+    align-content: center;
+    color: white;
+}
+.rating-number:hover{
+    color: black;    
+}
+.bad:hover{
+    background-color: var(--color-primary-red);
+}
+.decent:hover{
+    background-color: var(--color-primary-orange);
+}
+.good:hover{
+    background-color: var(--color-primary-green);
+}
+.current-rating{
+    border-radius: 100px;
+    text-align: center;
+    align-content: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    background-color: #ffbd3f;
+    font-size: 2rem;
+}

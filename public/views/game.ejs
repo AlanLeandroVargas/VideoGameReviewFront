@@ -12,16 +12,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../css/game.css">
 </head>
 
 <body>
-    <%- include('partials/header') %>
+    <%- include('partials/header') %>        
         <div class="container mt-5 vh-75">
             <div class="card mb-3 h-100">
                 <div class="d-flex">
                     <div class="d-flex card-img-container">
-                        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/header.jpg?t=1725654125" class="rounded-start card-picture" alt="...">
+                        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/header.jpg?t=1725654125"
+                            class="rounded-start card-picture" alt="...">
                     </div>
                     <div class="w-50">
                         <div class="card-body">
@@ -36,12 +38,52 @@
                                     <div class="bg-success align-content-center text-center w-100 rounded">
                                         <h2 class="p-2">100</h2>
                                     </div>
-                                </div>                                
+                                </div>
                             </div>
                             <div class="container d-flex mt-5 w-100">
-                                <button class="btn btn-success w-100">Agregar reseña</button>
+                                <button class="btn btn-success w-100" data-bs-toggle="modal"
+                                    data-bs-target="#reviewModal">Agregar reseña</button>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="reviewModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <h3 class="modal-title" id="staticBackdropLabel">Agregar mi reseña</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container d-flex pb-3 border-bottom">
+                            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/header.jpg?t=1725654125" class="modal-img" alt="">
+                            <h4 class="card-title ms-4">Baldurs Gate</h4>
+                        </div>
+                        <div class="container d-flex rating-container p-0 my-3">
+                            <div class="current-rating me-3">6</div>
+                            <div class="rating-number bad mx-1">1</div>                            
+                            <div class="rating-number bad mx-1">2</div>
+                            <div class="rating-number bad mx-1">3</div>
+                            <div class="rating-number decent mx-1">4</div>
+                            <div class="rating-number decent mx-1">5</div>
+                            <div class="rating-number decent mx-1">6</div>
+                            <div class="rating-number decent mx-1">7</div>
+                            <div class="rating-number good mx-1">8</div>
+                            <div class="rating-number good mx-1">9</div>
+                            <div class="rating-number good mx-1">10</div>
+                        </div>
+                        <div class="container mt-3 border-top">
+                            <label for="reviewComment" class="form-label">Escribi tu reseña.</label>
+                            <textarea class="form-control" id="reviewComment" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="d-flex border-0">
+                        <button type="button" class="btn btn-secondary m-3 w-50" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary m-3 w-50">Publicar</button>
                     </div>
                 </div>
             </div>
