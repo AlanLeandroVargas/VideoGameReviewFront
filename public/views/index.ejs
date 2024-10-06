@@ -16,13 +16,78 @@
 
 <body>
     <%- include('partials/header') %>
-        <div class="container mt-3">
-            <h2 class="border-bottom border-dark p-2">Genre</h2>
+        <div class="container mt-3">           
+            <h2 class="border-bottom border-dark p-2">Ultimos juegos</h2>
         </div>
         <div class="container d-flex vw-100">
             <div id="carouselExampleControls" class="carousel slide align-self-center" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="card-group carousel-item active d-flex">
+                    <div class="card-group carousel-item active">
+                        <div class="d-flex">
+                            <% firstRow.forEach(function(game) { %>
+                                <div class="card d-flex m-2 w-25">
+                                    <img src="<%= game.imageUrl %>" class="card-img-top" alt="...">
+                                    <div class="card-body d-flex flex-column">
+                                        <h3 class="card-title">
+                                            <%= game.name %>
+                                        </h3>
+                                        <div class="container p-0 mt-3 d-flex flex-wrap">
+                                            <% game.genre.forEach(function(genre) { %>
+                                                <p class="border p-1 mx-1 text-center rounded">
+                                                    <%= genre %>
+                                                </p>
+                                                <% }); %>                                                    
+                                        </div>
+                                        <div class="container border-top card-bottom px-0 d-flex">
+                                            <div class="container p-0 mt-3">
+                                                <h6>Generalmente favorable</h6>
+                                                <p class="card-text">Basado en <%= game.amountOfReviews %> criticas</p>
+                                            </div>
+                                            <div class="container w-50 d-flex my-3">
+                                                <div class="bg-success align-content-center text-center w-100 rounded">
+                                                    <h2 class="p-2">
+                                                        <%= game.averagePuntuation %>
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% }); %>
+                        </div>
+                    </div>
+                    <!-- <div class="card-group carousel-item">
+                        <div class="d-flex">
+                            <% secondRow.forEach(function(game) { %>
+                                <div class="card m-2 w-25">
+                                    <img src="<%= game.imageUrl %>" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h3 class="card-title">
+                                            <%= game.name %>
+                                        </h3>
+                                        <div class="container p-0 mt-3 d-flex">
+                                            <p class="border w-25 mx-1 text-center rounded">RPG</p>
+                                            <p class="border w-25 mx-1 text-center rounded">Accion</p>
+                                        </div>
+                                        <div class="container border-top mt-5 px-0 d-flex">
+                                            <div class="container p-0 mt-3">
+                                                <h6>Generalmente favorable</h6>
+                                                <p class="card-text">Basado en <%= game.amountOfReviews %> criticas</p>
+                                            </div>
+                                            <div class="container w-50 d-flex my-3">
+                                                <div class="bg-success align-content-center text-center w-100 rounded">
+                                                    <h2 class="p-2">
+                                                        <%= game.averagePuntuation %>
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% }); %>
+                        </div>
+                    </div>   -->
+                    <div class="card-group carousel-item">
                         <div class="d-flex">
                             <div class="card m-2 w-25">
                                 <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/header.jpg?t=1725654125"
@@ -104,103 +169,8 @@
                                     <p class="card-text">EL NUEVO JUEGO DE ROL Y ACCIÓN DE AMBIENTACIÓN FANTÁSTICA.
                                         Álzate, Sinluz, y que la gracia te guíe para abrazar el poder del Círculo de
                                         Elden y encumbrarte como señor del Círculo en las Tierras Intermedias.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-group carousel-item">
-                        <div class="d-flex">
-                            <div class="card m-3 w-25">
-                                <img src="https://placehold.co/400" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Another CAARD title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural
-                                        lead-in to
-                                        additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                            <div class="card m-3 w-25">
-                                <img src="https://placehold.co/400" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This card has supporting text below as a natural lead-in to
-                                        additional content.
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small>
                                     </p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                            <div class="card m-3 w-25">
-                                <img src="https://placehold.co/400" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural
-                                        lead-in to
-                                        additional content. This card has even longer content than the first to show
-                                        that equal height
-                                        action.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                            <div class="card m-3 w-25">
-                                <img src="https://placehold.co/400" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural
-                                        lead-in to
-                                        additional content. This card has even longer content than the first to show
-                                        that equal height
-                                        action.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-group carousel-item">
-                        <div class="d-flex">
-                            <div class="card m-3 w-25">
-                                <img src="https://placehold.co/400" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural
-                                        lead-in to
-                                        additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                            <div class="card m-3 w-25">
-                                <img src="https://placehold.co/400" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This card has supporting text below as a natural lead-in to
-                                        additional content.
-                                    </p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                            <div class="card m-3 w-25">
-                                <img src="https://placehold.co/400" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural
-                                        lead-in to
-                                        additional content. This card has even longer content than the first to show
-                                        that equal height
-                                        action.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                            <div class="card m-3 w-25">
-                                <img src="https://placehold.co/400" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural
-                                        lead-in to
-                                        additional content. This card has even longer content than the first to show
-                                        that equal height
-                                        action.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                 </div>
                             </div>
                         </div>
