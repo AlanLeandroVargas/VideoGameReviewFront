@@ -22,34 +22,57 @@
             <div class="card mb-3 <%=gameData._id %>">
                 <div class="d-flex">
                     <div class="d-flex card-img-container">
-                        <img src="<%= gameData.imageUrl %>"
-                            class="rounded-start card-picture" alt="...">
+                        <img src="<%= gameData.imageUrl %>" class="rounded-start card-picture" alt="...">
                     </div>
                     <div class="w-50">
                         <div class="card-body">
-                            <h2 class="card-title"><%= gameData.name %></h2>
-                            <p class="card-text">Fecha de lanzamiento: <%= gameData.releaseDate%></p>
+                            <h2 class="card-title">
+                                <%= gameData.name %>
+                            </h2>
+                            <p class="card-text">Fecha de lanzamiento: <%= gameData.releaseDate%>
+                            </p>
                             <h5>Descripcion:</h5>
-                            <p class="card-text"><%= gameData.description%></p>
+                            <p class="card-text">
+                                <%= gameData.description%>
+                            </p>
                             <div class="container border-top mt-5 px-0 d-flex">
                                 <div class="container mt-3">
                                     <h5>Generalmente favorable</h5>
                                     <p class="card-text">Basado en <%= gameData.amountOfReviews %> criticas</p>
                                 </div>
                                 <div class="container w-25 d-flex my-3">
-                                    <div class="bg-success align-content-center text-center w-100 rounded">
-                                        <h2 class="p-2"><%= gameData.averagePuntuation %></h2>
-                                    </div>
+                                    <% if (gameData.averagePuntuation < 4) {%>
+                                        <div
+                                            class="align-content-center text-center w-100 rounded bad-rating">
+                                            <h2 class="p-2">
+                                                <%= gameData.averagePuntuation %>
+                                            </h2>
+                                        </div>
+                                        <% } else if (gameData.averagePuntuation >= 4 && gameData.averagePuntuation < 8) { %>
+                                                <div
+                                                    class="align-content-center text-center w-100 rounded decent-rating">
+                                                    <h2 class="p-2">
+                                                        <%= gameData.averagePuntuation %>
+                                                    </h2>
+                                                </div>
+                                                <% } else { %>
+                                                    <div
+                                                        class="align-content-center text-center w-100 rounded good-rating">
+                                                        <h2 class="p-2">
+                                                            <%= gameData.averagePuntuation %>
+                                                        </h2>
+                                                    </div>
+                                                    <% } %>
                                 </div>
                             </div>
-                            
+
                             <div class="container d-flex mt-5 w-100">
                                 <% if (isLoggedIn) { %>
                                     <button class="btn btn-success w-100" data-bs-toggle="modal"
-                                    data-bs-target="#reviewModal">Agregar reseña</button>
+                                        data-bs-target="#reviewModal">Agregar reseña</button>
                                     <% } else { %>
-                                        <a class="btn btn-success w-100" href="/signUp">Registrarse</a>                                        
-                                        <% } %>                                
+                                        <a class="btn btn-success w-100" href="/signUp">Registrarse</a>
+                                        <% } %>
                             </div>
                         </div>
                     </div>
@@ -58,69 +81,40 @@
         </div>
         <div class="container">
             <h3 class="border-bottom">Reseñas</h3>
-            <div class="row">
-                <div class="col">
-                    <div class="card mb-3 mt-3 border" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="card-body review-card-header">
-                                <div class="user-score">5</div>
-                                <h4 class="username ms-4">pospos56</h4>
-                                <p class="date text-end col "><small>OCT 6, 2024</small></p>
-                            </div>
-                            <div class="card-body review-card-content">
-                                <p>the game was not bad but the animation went the character talk the mouth animation is
-                                    not in accordance and the animation too but the gameplay its still okay</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
+            <div class="grid-review-container">
+                <% reviews.forEach(function(review) { %>
                     <div class="card mb-3 mt-3 bg-dark" style="max-width: 540px;">
                         <div class="row g-0">
                             <div class="card-body review-card-header">
-                                <div class="user-score text-light">5</div>
-                                <h4 class="username ms-4 text-light">pospos56</h4>
-                                <p class="date text-end col text-light"><small>OCT 6, 2024</small></p>
+                                <% if (review.puntuation < 4) {%>
+                                    <div class="user-score text-light bad-rating">
+                                        <%= review.puntuation %>
+                                    </div>
+                                    <% } else if (review.puntuation >= 4 && review.puntuation < 8) { %>
+                                            <div class="user-score text-light decent-rating">
+                                                <%= review.puntuation %>
+                                            </div>
+                                            <% } else { %>
+                                                <div class="user-score text-light good-rating">
+                                                    <%= review.puntuation %>
+                                                </div>
+                                                <% } %>
+                                                    <!-- <div class="user-score text-light"><%= review.puntuation %></div> -->
+                                                    <h4 class="username ms-4 text-light">
+                                                        <%= review.authorName %>
+                                                    </h4>
+                                                    <p class="date text-end col text-light"><small>
+                                                            <%= review.date %>
+                                                        </small></p>
                             </div>
                             <div class="card-body review-card-content text-light">
-                                <p>the game was not bad but the animation went the character talk the mouth animation is
-                                    not in accordance and the animation too but the gameplay its still okay</p>
+                                <p>
+                                    <%= review.comment %>
+                                </p>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="card mb-3 mt-3 bg-dark" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="card-body review-card-header">
-                                <div class="user-score text-light">5</div>
-                                <h4 class="username ms-4 text-light">pospos56</h4>
-                                <p class="date text-end col text-light"><small>OCT 6, 2024</small></p>
-                            </div>
-                            <div class="card-body review-card-content text-light">
-                                <p>the game was not bad but the animation went the character talk the mouth animation is
-                                    not in accordance and the animation too but the gameplay its still okay</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card mb-3 mt-3 bg-dark" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="card-body review-card-header">
-                                <div class="user-score text-light">5</div>
-                                <h4 class="username ms-4 text-light">pospos56</h4>
-                                <p class="date text-end col text-light"><small>OCT 6, 2024</small></p>
-                            </div>
-                            <div class="card-body review-card-content text-light">
-                                <p>the game was not bad but the animation went the character talk the mouth animation is
-                                    not in accordance and the animation too but the gameplay its still okay</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <% }); %>
             </div>
         </div>
         <div class="modal fade" id="reviewModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -133,9 +127,10 @@
                     </div>
                     <div class="modal-body">
                         <div class="container d-flex pb-3 border-bottom">
-                            <img src="<%= gameData.imageUrl %>"
-                                class="modal-img" alt="">
-                            <h4 class="card-title ms-4"><%= gameData.name %></h4>
+                            <img src="<%= gameData.imageUrl %>" class="modal-img" alt="">
+                            <h4 class="card-title ms-4">
+                                <%= gameData.name %>
+                            </h4>
                         </div>
                         <div class="container d-flex rating-container p-0 my-3">
                             <div class="current-rating me-3">0</div>
@@ -165,4 +160,5 @@
         </div>
 </body>
 <script src="../js/game.js" type="module"></script>
+
 </html>

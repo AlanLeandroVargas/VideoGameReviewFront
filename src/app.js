@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 import { retrieveGamesByGenre } from './index.js';
 import cookieParser from 'cookie-parser';
 import jwt from 'jsonwebtoken'
-import { retrieveGame } from './game.js';
+import { retrieveGame, retrieveReviews } from './game.js';
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -29,11 +29,9 @@ app.get('/login', (req, res) => {
 app.get('/game/:gameName', checkAuth, async (req, res) => {
     const gameName = req.params.gameName;
     const gameData = await retrieveGame(gameName);
-    const date = new Date(gameData.releaseDate);
-    const options = { year: 'numeric', month: 'short', day: 'numeric' };
-    const formattedDate = date.toLocaleDateString('en-US', options).toUpperCase();
-    gameData.releaseDate = formattedDate;
-    res.render('game', { title: gameName, gameData: gameData, isLoggedIn: req.isLoggedIn });
+    gameData.releaseDate = formatDate(gameData.releaseDate);    
+    const reviews = await retrieveReviews(gameName);
+    res.render('game', { title: gameName, gameData: gameData, reviews: reviews, isLoggedIn: req.isLoggedIn });
 })
 app.get('/logout', (req, res) => {
     res.clearCookie('token');
@@ -44,7 +42,7 @@ app.use((req, res) => {
 });
 
 function checkAuth(req, res, next) {
-    const token = req.cookies.token; // Get token from cookies
+    const token = req.cookies.token; 
 
     if (!token) {
         req.isLoggedIn = false;
@@ -59,5 +57,12 @@ function checkAuth(req, res, next) {
         }
         next();
     });
+}
+
+function formatDate(inputDate){
+    const date = new Date(inputDate);
+    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    const formattedDate = date.toLocaleDateString('en-US', options).toUpperCase();
+    return formattedDate;
 }
 export default app;

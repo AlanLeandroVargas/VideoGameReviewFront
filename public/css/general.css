@@ -18,3 +18,21 @@ a:hover {
     background: none;      
     border: none;           
 }
+.bad-rating{
+    background-color: var(--color-primary-red);
+}
+.decent-rating{
+    background-color: var(--color-primary-orange);
+}
+.good-rating{
+    background-color: var(--color-primary-green);
+}
+.bad:hover{
+    background-color: var(--color-primary-red);
+}
+.decent:hover{
+    background-color: var(--color-primary-orange);
+}
+.good:hover{
+    background-color: var(--color-primary-green);
+}

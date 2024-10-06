@@ -26,15 +26,6 @@
 .rating-number:hover{
     color: black;    
 }
-.bad:hover{
-    background-color: var(--color-primary-red);
-}
-.decent:hover{
-    background-color: var(--color-primary-orange);
-}
-.good:hover{
-    background-color: var(--color-primary-green);
-}
 .current-rating{
     border-radius: 100px;
     text-align: center;
@@ -55,10 +46,11 @@
     width: 4.5rem;
     height: 4.5rem;
     font-size: 2rem;
-    background-color: #ffbd3f;
-}
-.username{
 }
 .date{
     text-align: center;
+}
+.grid-review-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);    
 }

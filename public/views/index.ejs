@@ -56,11 +56,25 @@
                                                     <p class="card-text">Basado en <%= game.amountOfReviews %> criticas</p>
                                                 </div>
                                                 <div class="container w-50 d-flex my-3">
-                                                    <div class="bg-success align-content-center text-center w-100 rounded">
-                                                        <h2 class="p-2">
-                                                            <%= game.averagePuntuation %>
-                                                        </h2>
-                                                    </div>
+                                                    <% if (game.averagePuntuation < 4) {%>
+                                                        <div class="align-content-center text-center w-100 rounded bad-rating">
+                                                            <h2 class="p-2">
+                                                                <%= game.averagePuntuation %>
+                                                            </h2>
+                                                        </div>
+                                                        <% } else if (game.averagePuntuation >= 4 && game.averagePuntuation < 8) { %>
+                                                            <div class="align-content-center text-center w-100 rounded decent-rating">
+                                                                <h2 class="p-2">
+                                                                    <%= game.averagePuntuation %>
+                                                                </h2>
+                                                            </div>
+                                                                <% } else { %>
+                                                                    <div class="align-content-center text-center w-100 rounded good-rating">
+                                                                        <h2 class="p-2">
+                                                                            <%= game.averagePuntuation %>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <% } %>                                                    
                                                 </div>
                                             </div>
                                         </div>
