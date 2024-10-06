@@ -1,11 +1,12 @@
 .card-img-container{
-    width: 60%;
+    width: 50%;
 }
 .card-picture{
+    object-fit: cover;
     width: 100%;
 }
 .modal-img{
-    object-fit: fill;
+    object-fit: contain;
     width: 40%;
     height: 40%;
 }
@@ -42,9 +43,6 @@
     height: 4.5rem;
     background-color: #ffbd3f;
     font-size: 2rem;
-}
-.review-card{
-    /* background-color: gray; */
 }
 .review-card-header{
     display: flex;

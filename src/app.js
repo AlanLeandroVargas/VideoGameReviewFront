@@ -17,7 +17,7 @@ app.set('views', path.join(__dirname, '..', 'public', 'views'));
 
 app.get('/', checkAuth, async (req, res) => {
     const retrievedGames = await retrieveGamesByGenre('Rol');
-    res.render('index', { title: 'Home', firstRow: retrievedGames.firstRow, secondRow: retrievedGames.secondRow , isLoggedIn: req.isLoggedIn});
+    res.render('index', { title: 'Home', firstRow: retrievedGames.firstRow, secondRow: retrievedGames.secondRow, isLoggedIn: req.isLoggedIn});
 });
 app.get('/signUp', (req, res) => {
     res.render('signUp', { title: 'Registrarse' });
@@ -25,9 +25,9 @@ app.get('/signUp', (req, res) => {
 app.get('/login', (req, res) => {
     res.render('login', { title: 'Iniciar Sesion' })
 })
-app.get('/game/:gameName', async (req, res) => {
+app.get('/game/:gameName', checkAuth, async (req, res) => {
     const gameName = req.params.gameName;    
-    res.render('game', { title: gameName });
+    res.render('game', { title: gameName, isLoggedIn: req.isLoggedIn});
 })
 app.get('/logout', (req, res) => {
     res.clearCookie('token');  
