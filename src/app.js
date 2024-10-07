@@ -5,7 +5,7 @@ import { retrieveGamesByGenre } from './index.js';
 import cookieParser from 'cookie-parser';
 import jwt from 'jsonwebtoken'
 import { retrieveGame, retrieveReviews } from './game.js';
-import { searchGames } from './search.js';
+import { searchByGenre, searchGames } from './search.js';
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -40,6 +40,11 @@ app.get('/game/:gameName', checkAuth, async (req, res) => {
 app.get('/search', checkAuth, async (req, res) => {
     const search = req.query.search;
     const searchedGames = await searchGames(search);
+    res.render('search', { title: 'Busqueda', searchedGames: searchedGames, isLoggedIn: req.isLoggedIn});
+})
+app.get('/search/:genre', checkAuth, async (req, res) => {
+    const genre = req.params.genre;
+    const searchedGames = await searchByGenre(genre);
     res.render('search', { title: 'Busqueda', searchedGames: searchedGames, isLoggedIn: req.isLoggedIn});
 })
 app.get('/logout', (req, res) => {

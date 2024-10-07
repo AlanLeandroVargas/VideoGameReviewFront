@@ -9,6 +9,18 @@ async function searchGames(search){
         console.error(error)
     }
 }
+async function searchByGenre(genre) {
+    try{
+        const response = await fetch(`http://localhost:3001/api/videogame/genre/${genre}`);
+        if(!response.ok) throw new Error(response.status);
+        const retrievedGames = await response.json();
+        return retrievedGames;
+    }
+    catch(error){
+        console.error(error)
+    }
+}
 export {
-    searchGames
+    searchGames,
+    searchByGenre
 }
