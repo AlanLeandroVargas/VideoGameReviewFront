@@ -37,7 +37,16 @@
                             </p>
                             <div class="container border-top mt-5 px-0 d-flex">
                                 <div class="container mt-3">
-                                    <h5>Generalmente favorable</h5>
+                                    <% if (gameData.averagePuntuation < 4) { %>
+                                        <h5>Mayormente negativas</h5>
+
+                                        <% } else if (gameData.averagePuntuation < 8) { %>
+                                            <h5>Opiniones mixtas</h5>
+
+                                            <% } else { %>
+                                                <h5>Mayormente positivas</h5>
+
+                                                <% } %>
                                     <p class="card-text">Basado en <%= gameData.amountOfReviews %> criticas</p>
                                 </div>
                                 <div class="container w-25 d-flex my-3">

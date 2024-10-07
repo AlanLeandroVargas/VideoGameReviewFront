@@ -39,7 +39,16 @@
                         </div>
                         <div class="container border-top card-bottom px-0 d-flex">
                             <div class="container p-0 mt-3">
-                                <h6>Generalmente favorable</h6>
+                                <% if (game.averagePuntuation < 4) { %>
+                                    <h6>Mayormente negativas</h6>
+
+                                    <% } else if (game.averagePuntuation < 8) { %>
+                                        <h6>Opiniones mixtas</h6>
+
+                                        <% } else { %>
+                                            <h6>Mayormente positivas</h6>
+
+                                            <% } %>
                                 <p class="card-text">Basado en <%= game.amountOfReviews %> criticas
                                 </p>
                             </div>
