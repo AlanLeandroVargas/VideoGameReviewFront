@@ -22,7 +22,7 @@ app.get('/', checkAuth, async (req, res) => {
     const actionGames = await retrieveGamesByGenre('Acción');
     res.render('index', { title: 'Home', firstRow: retrievedGames.firstRow, secondRow: retrievedGames.secondRow, thirdRow: retrievedGames.thirdRow, 
         actionGames: actionGames,
-        isLoggedIn: req.isLoggedIn });
+        isLoggedIn: req.isLoggedIn, role: req.role });
 });
 app.get('/signUp', (req, res) => {
     res.render('signUp', { title: 'Registrarse' });
@@ -35,17 +35,17 @@ app.get('/game/:gameName', checkAuth, async (req, res) => {
     const gameData = await retrieveGame(gameName);
     gameData.releaseDate = formatDate(gameData.releaseDate);    
     const reviews = await retrieveReviews(gameName);
-    res.render('game', { title: gameName, gameData: gameData, reviews: reviews, isLoggedIn: req.isLoggedIn });
+    res.render('game', { title: gameName, gameData: gameData, reviews: reviews, isLoggedIn: req.isLoggedIn, role: req.role });
 })
 app.get('/search', checkAuth, async (req, res) => {
     const search = req.query.search;
     const searchedGames = await searchGames(search);
-    res.render('search', { title: 'Busqueda', searchedGames: searchedGames, isLoggedIn: req.isLoggedIn});
+    res.render('search', { title: 'Busqueda', search: search, searchedGames: searchedGames, isLoggedIn: req.isLoggedIn, role: req.role});
 })
 app.get('/search/:genre', checkAuth, async (req, res) => {
     const genre = req.params.genre;
     const searchedGames = await searchByGenre(genre);
-    res.render('search', { title: 'Busqueda', searchedGames: searchedGames, isLoggedIn: req.isLoggedIn});
+    res.render('search', { title: 'Busqueda', search: genre, searchedGames: searchedGames, isLoggedIn: req.isLoggedIn, role: req.role});
 })
 app.get('/logout', (req, res) => {
     res.clearCookie('token');
@@ -68,6 +68,8 @@ function checkAuth(req, res, next) {
             req.isLoggedIn = false;
         } else {
             req.isLoggedIn = true;
+            // console.log(decoded);
+            req.role = decoded.role;
         }
         next();
     });

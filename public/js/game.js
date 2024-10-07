@@ -41,7 +41,8 @@ function publishReview(){
             const response = await fetch(`http://localhost:3001/api/review`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/json',           
+                    'Authorization': `Bearer ${getCookie('token')}`
                 },
                 body: JSON.stringify(body)
             });

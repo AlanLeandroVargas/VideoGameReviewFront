@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../../css/header.css">
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <div class="container-fluid">
@@ -19,21 +20,67 @@
                             <li><a class="dropdown-item text-dark" href="/search/Rol">RPG</a></li>
                             <li><a class="dropdown-item text-dark" href="/search/Mundo abierto">Mundo Abierto</a></li>
                             <li><a class="dropdown-item text-dark" href="/search/Metroidvania">Metroidvania</a></li>
-                            <li><a class="dropdown-item text-dark" href="/search/Plataformas">Plataformas</a></li>                        
+                            <li><a class="dropdown-item text-dark" href="/search/Plataformas">Plataformas</a></li>
                         </ul>
                     </li>
                 </ul>
                 <div class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" id="search">
                 </div>
-                <% if (isLoggedIn) { %>
+                <% if (isLoggedIn && role=="admin" ) { %>
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#videogamewModal">Agregar
+                        Videojuego</button>
                     <a class="btn btn-danger m-3" href="/logOut">Salir</a>
-                    <% } else { %>
-                        <a class="btn btn-success m-3" href="/signUp">Registrarse</a>
-                        <a class="btn btn-primary m-3" href="/login">Iniciar Sesion</a>
-                        <% } %>
+
+                    <div class="modal fade" id="videogamewModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title" id="staticBackdropLabel">Agregar un videojuego</h3>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container mt-3">
+                                        <label for="videogameName" class="form-label">Nombre del videojuego.</label>
+                                        <input class="form-control" type="text" id="videogameName" placeholder="Nombre">
+                                        <label for="videogameGenre" class="form-label">Generos.</label>
+                                        <div id="genre-container">
+                                            <input class="form-control" type="text" id="videogameGenre"
+                                                placeholder="Escribe un genero y presiona enter">
+                                        </div>
+                                        <input type="hidden" id="genres" name="genres" value="">
+                                        <label for="videogameDescription" class="form-label">Descripción.</label>
+                                        <input class="form-control" type="text" id="videogameDescription"
+                                            placeholder="Descripción">
+                                        <label for="videogameImageUrl" class="form-label">Url de imagen.</label>
+                                        <input class="form-control" type="text" id="videogameImageUrl"
+                                            placeholder="Url de imagen">
+                                        <label for="videogameReleaseDate" class="form-label">Fecha de
+                                            lanzamiento.</label>
+                                        <input class="form-control" type="date" id="videogameReleaseDate"
+                                            placeholder="Fecha de lanzamiento">                                       
+                                    </div>
+                                </div>
+                                <div class="d-flex border-0">
+                                    <button type="button" class="btn btn-secondary m-3 w-50"
+                                        data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="button" id="publishBtn"
+                                        class="btn btn-primary m-3 w-50">Publicar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% } else if (isLoggedIn) { %>
+                        <a class="btn btn-danger m-3" href="/logOut">Salir</a>
+
+                        <% } else { %>
+                            <a class="btn btn-success m-3" href="/signUp">Registrarse</a>
+                            <a class="btn btn-primary m-3" href="/login">Iniciar Sesion</a>
+                            <% } %>
             </div>
         </div>
     </nav>
 </header>
-<script src="../../js/header.js"></script>
+<script src="../../js/header.js" type="module"></script>
