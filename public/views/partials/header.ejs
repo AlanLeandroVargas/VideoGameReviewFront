@@ -24,9 +24,9 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                </form>
+                <div class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" id="search">
+                </div>
                 <% if (isLoggedIn) { %>
                     <a class="btn btn-danger m-3" href="/logOut">Salir</a>
                     <% } else { %>
@@ -37,3 +37,4 @@
         </div>
     </nav>
 </header>
+<script src="../../js/header.js"></script>
